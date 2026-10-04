@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0f141b">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>פרוטוקול אימון בטוח: ליבה, רגליים, גב תחתון וברך</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f141b;
+    --surface: #171e28;
+    --surface-2: #1e2733;
+    --line: #2a3544;
+    --text: #e9edf2;
+    --soft: #c5cdd8;
+    --muted: #93a0b2;
+    --gold: #d4ab5e;
+    --gold-soft: rgba(212, 171, 94, 0.12);
+    --done: #63b8a5;
+    --done-soft: rgba(99, 184, 165, 0.10);
+    --stop: #e27a68;
+    --stop-soft: rgba(226, 122, 104, 0.12);
+    --dock-h: 76px;
+
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: "Heebo", "Assistant", "Arimo", "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button, input { font: inherit; }
+
+  .page {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 2rem 1.125rem calc(var(--dock-h) + 2.5rem);
+  }
+
+  [lang="en"] { unicode-bidi: isolate; direction: ltr; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ---------- Header ---------- */
+
+  .today {
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.75rem, 6.2vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .overall {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .overall-track {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+
+  .overall-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background: var(--done);
+    transition: width 0.3s ease;
+  }
+
+  .overall-text {
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ---------- Iron rules ---------- */
+
+  .rules {
+    margin: 2rem 0 0;
+    padding: 1.125rem 1.25rem;
+    border: 1px solid rgba(212, 171, 94, 0.35);
+    border-radius: 16px;
+    background: var(--gold-soft);
+  }
+
+  .rules h2 {
+    margin: 0 0 0.625rem;
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .rules ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.625rem;
+  }
+
+  .rules li {
+    display: grid;
+    grid-template-columns: 1.375rem 1fr;
+    gap: 0.625rem;
+    align-items: start;
+    font-weight: 500;
+  }
+
+  .rules svg {
+    width: 1.375rem;
+    height: 1.375rem;
+    margin-top: 0.15rem;
+    color: var(--gold);
+  }
+
+  .rules li.forbid svg { color: var(--stop); }
+
+  /* ---------- Sections ---------- */
+
+  .part { margin-top: 2.75rem; }
+
+  .part-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .part-head h2 {
+    margin: 0;
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .part-head p {
+    margin: 0.125rem 0 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .count {
+    flex: none;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .count.full { color: var(--done); }
+
+  /* ---------- Exercise cards ---------- */
+
+  .ex {
+    margin-top: 0.875rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .ex.is-done {
+    border-color: rgba(99, 184, 165, 0.45);
+    background: linear-gradient(var(--done-soft), var(--done-soft)), var(--surface);
+  }
+
+  .ex-top {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 1.125rem;
+  }
+
+  .tick {
+    flex: none;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    border: 2px solid #4a586c;
+    border-radius: 9px;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tick::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.95rem;
+    margin-top: -0.2rem;
+    border: solid var(--ink);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.15s ease;
+  }
+
+  .tick:checked { background: var(--done); border-color: var(--done); }
+  .tick:checked::after { transform: rotate(45deg) scale(1); }
+
+  .ex-title { min-width: 0; }
+
+  .ex-num {
+    display: block;
+    color: var(--gold);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .ex h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .ex h3 .he {
+    color: var(--muted);
+    font-weight: 400;
+    margin-inline-start: 0.375rem;
+  }
+
+  /* Video */
+
+  .video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #0a0e13;
+    border-block: 1px solid var(--line);
+  }
+
+  .video iframe,
+  .video .play,
+  .video .play img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video .play {
+    padding: 0;
+    cursor: pointer;
+    background:
+      radial-gradient(120% 90% at 50% 40%, #232e3d 0%, #0d1218 75%);
+    color: var(--muted);
+    display: grid;
+    place-items: center;
+  }
+
+  .video .play img {
+    object-fit: cover;
+    opacity: 0.82;
+    transition: opacity 0.2s ease;
+  }
+
+  .video .play:hover img { opacity: 1; }
+
+  .play-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 0.875rem;
+    border-radius: 999px;
+    background: rgba(15, 20, 27, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--text);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .play-badge svg { width: 1.125rem; height: 1.125rem; color: var(--gold); }
+
+  .ex-body { padding: 1rem 1.125rem 1.125rem; }
+
+  .dose {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .dose li {
+    padding: 0.125rem 0.625rem;
+    border-radius: 7px;
+    background: var(--surface-2);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cue {
+    margin: 0.75rem 0 0;
+    color: var(--soft);
+    font-size: 0.9375rem;
+  }
+
+  .cue-list {
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.375rem;
+    color: var(--soft);
+    font-size: 0.9375rem;
+  }
+
+  .cue-list li { padding-inline-start: 1rem; position: relative; }
+
+  .cue-list li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .actions {
+    margin-top: 0.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    min-height: 2.5rem;
+    padding: 0.25rem 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .pill:hover { border-color: var(--gold); color: var(--gold); }
+  .pill svg { width: 1rem; height: 1rem; }
+  .pill.quiet { color: var(--muted); border-color: transparent; padding-inline: 0.5rem; }
+  .pill.quiet:hover { color: var(--text); }
+
+  .video-tools {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .swap {
+    margin-top: 0.625rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .swap[hidden] { display: none; }
+
+  .swap input {
+    flex: 1;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--text);
+    direction: ltr;
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  .swap input::placeholder { color: #66748a; }
+
+  .swap button {
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 0;
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .swap-msg {
+    margin: 0.375rem 0 0;
+    color: var(--stop);
+    font-size: 0.8125rem;
+  }
+
+  .swap-msg:empty { display: none; }
+
+  /* ---------- Reset ---------- */
+
+  .reset-wrap { margin-top: 2.75rem; text-align: center; }
+
+  .reset-btn {
+    min-height: 3rem;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .reset-btn:hover { border-color: var(--muted); }
+
+  .reset-btn.confirm {
+    border-color: var(--stop);
+    background: var(--stop-soft);
+    color: var(--stop);
+  }
+
+  .reset-note {
+    margin: 0.625rem 0 0;
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+
+  /* ---------- Floating timer ---------- */
+
+  .dock {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0 0.625rem calc(0.625rem + env(safe-area-inset-bottom, 0px));
+    pointer-events: none;
+  }
+
+  .dock-card {
+    pointer-events: auto;
+    max-width: 30rem;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(23, 30, 40, 0.95);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .dock-bar { height: 3px; }
+
+  .dock-bar span {
+    display: block;
+    height: 100%;
+    background: var(--gold);
+    transform-origin: right center;
+    transform: scaleX(0);
+  }
+
+  .dock-inner {
+    padding: 0.5rem 0.625rem 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .time {
+    flex: 1;
+    min-width: 3.75rem;
+    direction: ltr;
+    text-align: right;
+    padding-inline-start: 0.25rem;
+    font-size: 1.625rem;
+    font-weight: 300;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dock.is-running .time { color: var(--gold); font-weight: 500; }
+  .dock.is-finished .time { color: var(--done); font-weight: 500; }
+
+  .modes {
+    display: flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--ink);
+    border: 1px solid var(--line);
+  }
+
+  .modes button {
+    min-width: 2.375rem;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+  }
+
+  .modes button[aria-pressed="true"] { background: var(--surface-2); color: var(--text); }
+
+  .go-btn {
+    min-width: 3.875rem;
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #1a1508;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .go-btn:active { transform: scale(0.97); }
+
+  @media (min-width: 40rem) {
+    .page { padding-top: 3.5rem; }
+    .ex-top, .ex-body { padding-inline: 1.375rem; }
+    .time { font-size: 2rem; }
+    .dock { padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <header>
+    <p class="today" id="today"></p>
+    <h1>פרוטוקול אימון בטוח: ליבה, רגליים ושיקום עמוד שדרה מותני וברך</h1>
+    <div class="overall">
+      <div class="overall-track" aria-hidden="true"><div class="overall-fill" id="overallFill"></div></div>
+      <span class="overall-text" id="overallText" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <section class="rules" aria-labelledby="rulesTitle">
+    <h2 id="rulesTitle">דגשי ברזל: בטיחות קודם</h2>
+    <ul>
+      <li class="forbid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+        <span>ללא כפיפות בטן וללא פיתולים תחת עומס.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.800-1.200-8-4.500-8-9V6l8-3z"/></svg>
+        <span>עבודה עם שרוול או גומיית ברך על ברך שמאל.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h12M4 12h9M4 17h6"/><path d="M18 9v9m0 0l-3-3m3 3l3-3"/></svg>
+        <span>סדר פעולות קבוע: רוטינת מזרן קודם, אחריה אימון כוח או הליכה.</span>
+      </li>
+    </ul>
+  </section>
+
+  <div id="parts"></div>
+
+  <div class="reset-wrap">
+    <button class="reset-btn" type="button" id="resetBtn">איפוס אימון</button>
+    <p class="reset-note">הסימונים נשמרים במכשיר הזה גם אחרי ריענון.</p>
+  </div>
+
+</main>
+
+<aside class="dock" id="dock" aria-label="טיימר">
+  <div class="dock-card">
+    <div class="dock-bar" aria-hidden="true"><span id="dockBar"></span></div>
+    <div class="dock-inner">
+      <div class="time" id="time" role="timer" aria-label="זמן">00:30</div>
+      <div class="modes" role="group" aria-label="מצב טיימר">
+        <button type="button" data-mode="20" aria-pressed="false" aria-label="ספירה לאחור 20 שניות">20</button>
+        <button type="button" data-mode="30" aria-pressed="true" aria-label="ספירה לאחור 30 שניות">30</button>
+        <button type="button" data-mode="45" aria-pressed="false" aria-label="ספירה לאחור 45 שניות">45</button>
+        <button type="button" data-mode="0" aria-pressed="false" aria-label="סטופר">סטופר</button>
+      </div>
+      <button class="go-btn" type="button" id="goBtn">התחל</button>
+    </div>
+  </div>
+  <span class="sr-only" id="timerLive" aria-live="assertive"></span>
+</aside>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =====================================================================
+     תוכן האימון. להחלפת סרטון קבועה: לשנות את הערך video למזהה היוטיוב
+     (11 התווים שאחרי v= או אחרי /shorts/).
+     ===================================================================== */
+  var PARTS = [
+    {
+      title: "חלק א': פריקת לחץ והכנה על המזרן",
+      note: "יומי, לפני כל פעילות",
+      items: [
+        {
+          id: "cat-cow", en: "Cat-Cow", he: "חתול-פרה", video: "1Y0YjXS9sKI",
+          dose: ["1 סט", "10 חזרות איטיות"],
+          cue: "שחרור נוקשות מותנית, נשימה מבוקרת."
+        },
+        {
+          id: "glute-bridge", en: "Glute Bridge", he: "גשר ישבן", video: "bpUudcsZQ8g",
+          dose: ["3 סטים", "12 חזרות", "מנוחה 30 שניות"],
+          cue: "דחיפה דרך העקבים, כיווץ מלא של הישבן למעלה, שמירה על גב ניטרלי ללא הקשתת יתר.",
+          timers: [["מנוחה 30", 30]]
+        },
+        {
+          id: "bird-dog", en: "Bird-Dog", he: "כלב-ציפור", video: "ZdAHe9_HeEw",
+          dose: ["3 סטים", "8 חזרות לכל צד", "מנוחה 30 שניות"],
+          cue: "מנח גב כמו פלטת שולחן, שליחת יד ורגל נגדית במקביל לרצפה, החזקה של 2 שניות בשיא.",
+          timers: [["מנוחה 30", 30]]
+        }
+      ]
+    },
+    {
+      title: "חלק ב': ליבה ובטן מוגן",
+      note: "בימים ללא קליסטניקס",
+      items: [
+        {
+          id: "rkc-plank", en: "RKC Plank", he: "פלאנק נעול בדריכות מקסימלית", video: "v25dawSzRTM",
+          dose: ["3 סטים", "20-30 שניות כיווץ שיא", "מנוחה 45 שניות"],
+          cue: "אמות מקבילות, כיווץ ישבן להכנסת אגן (<span lang=\"en\">Posterior Pelvic Tilt</span>), משיכה מנטלית של המרפקים לבהונות.",
+          timers: [["כיווץ 20", 20], ["כיווץ 30", 30], ["מנוחה 45", 45]]
+        },
+        {
+          id: "side-plank", en: "Side Plank", he: "פלאנק צדי", video: "44ND4bOB-T0",
+          dose: ["3 סטים", "20-30 שניות לכל צד", "מנוחה 30 שניות"],
+          cue: "מרפק בדיוק תחת הכתף, אגן מורם בקו ישר, חיזוק שרירי ה-<span lang=\"en\">QL</span> והאלכסונים.",
+          timers: [["החזקה 20", 20], ["החזקה 30", 30], ["מנוחה 30", 30]]
+        },
+        {
+          id: "dead-bug", en: "Dead Bug", he: "חרק מת", video: "bxn9FBrt4-A",
+          dose: ["3 סטים", "8 חזרות איטיות לכל צד", "מנוחה 30 שניות"],
+          cue: "גב תחתון מודבק בכוח למזרן, ללא שום מרווח לאורך כל התנועה.",
+          timers: [["מנוחה 30", 30]]
+        }
+      ]
+    },
+    {
+      title: "חלק ג': רגליים מותאם",
+      note: "אפס עומס על מפרק הפיקה והגב",
+      items: [
+        {
+          id: "box-squat", en: "Box Squat", he: "ישיבה מבוקרת לכיסא", video: "KPei49EySQw",
+          dose: ["3 סטים", "10-12 חזרות"],
+          cue: "התיישבות לאחור דרך הירכיים, שוקיים נשארות כמעט אנכיות, ללא גלישת ברכיים קדימה, עם שרוול ברך."
+        },
+        {
+          id: "sumo-squat", en: "Sumo Squat", he: "סומו סקוואט בפיסוק רחב", video: "M51WEiE7byk",
+          dose: ["3 סטים", "10-12 חזרות"],
+          cue: "פיסוק רחב, גו זקוף לחלוטין (ללא כיפוף גב), ירידה מתונה עד 80 מעלות."
+        },
+        {
+          id: "calf-raises", en: "Calf Raises", he: "הרמות עקבים לתאומים", video: "ndQc4mz4mBU",
+          dose: ["3 סטים", "15 חזרות"],
+          cue: "עלייה מלאה על הבהונות, החזקה של שנייה למעלה, ייצוב הקרסול והברך."
+        }
+      ]
+    },
+    {
+      title: "חלק ד': הליכה יומית",
+      note: "אחרי רוטינת המזרן",
+      items: [
+        {
+          id: "walk", he: "הליכה במישור", plain: true,
+          dose: ["פעם ביום"],
+          list: ["שרוול ברך לאורך כל ההליכה.", "הליכה במישור בלבד.", "צעדים קצרים ומדודים.", "איסוף בטן קל."]
+        }
+      ]
+    }
+  ];
+
+  var CHECK_KEY = "safeTrainingProtocol.checks.v1";
+  var VIDEO_KEY = "safeTrainingProtocol.videos.v1";
+
+  function readStore(key) {
+    try {
+      var data = JSON.parse(localStorage.getItem(key) || "{}");
+      return data && typeof data === "object" ? data : {};
+    } catch (e) { return {}; }
+  }
+
+  function writeStore(key, data) {
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  }
+
+  var checks = readStore(CHECK_KEY);
+  var customVideos = readStore(VIDEO_KEY);
+
+  function videoIdFrom(text) {
+    var s = String(text || "").trim();
+    var m = s.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);
+    if (m) return m[1];
+    return /^[A-Za-z0-9_-]{11}$/.test(s) ? s : null;
+  }
+
+  /* ---------- Date ---------- */
+  try {
+    document.getElementById("today").textContent =
+      new Date().toLocaleDateString("he-IL", { weekday: "long", day: "numeric", month: "long" });
+  } catch (e) { /* locale not available */ }
+
+  /* ---------- Build the page ---------- */
+  var ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.500z"/></svg>';
+  var ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.500 2M9 2h6"/></svg>';
+
+  var partsEl = document.getElementById("parts");
+  var number = 0;
+  var html = "";
+
+  PARTS.forEach(function (part, pi) {
+    html += '<section class="part" data-part aria-labelledby="part' + pi + '">' +
+      '<div class="part-head"><div><h2 id="part' + pi + '">' + part.title + '</h2><p>' + part.note + '</p></div>' +
+      '<span class="count" data-count></span></div>';
+
+    part.items.forEach(function (it) {
+      var label = it.he;
+      var heading = it.en
+        ? '<span lang="en">' + it.en + '</span><span class="he">' + it.he + '</span>'
+        : it.he;
+      var num = "";
+      if (!it.plain) { number++; num = '<span class="ex-num">תרגיל ' + number + '</span>'; }
+
+      html += '<article class="ex" data-id="' + it.id + '">' +
+        '<div class="ex-top">' +
+          '<input class="tick" type="checkbox" aria-label="בוצע: ' + label + '">' +
+          '<div class="ex-title">' + num + '<h3>' + heading + '</h3></div>' +
+        '</div>';
+
+      if (it.video) {
+        html += '<div class="video" data-video data-label="' + label + '"></div>';
+      }
+
+      html += '<div class="ex-body"><ul class="dose">' +
+        it.dose.map(function (d) { return '<li>' + d + '</li>'; }).join("") + '</ul>';
+
+      if (it.cue) html += '<p class="cue">' + it.cue + '</p>';
+      if (it.list) {
+        html += '<ul class="cue-list">' +
+          it.list.map(function (d) { return '<li>' + d + '</li>'; }).join("") + '</ul>';
+      }
+
+      if (it.timers) {
+        html += '<div class="actions">' + it.timers.map(function (t) {
+          return '<button class="pill" type="button" data-timer="' + t[1] + '">' + ICON_CLOCK + t[0] + ' שניות</button>';
+        }).join("") + '</div>';
+      }
+
+      if (it.video) {
+        html += '<div class="video-tools">' +
+            '<a class="pill quiet" data-yt target="_blank" rel="noopener">פתיחה ביוטיוב</a>' +
+            '<button class="pill quiet" type="button" data-swap-toggle aria-expanded="false">החלפת סרטון</button>' +
+          '</div>' +
+          '<div class="swap" hidden>' +
+            '<input type="url" inputmode="url" placeholder="https://youtube.com/shorts/..." aria-label="קישור לסרטון יוטיוב עבור ' + label + '">' +
+            '<button type="button" data-swap-save>שמירה</button>' +
+          '</div>' +
+          '<p class="swap-msg" role="alert"></p>';
+      }
+
+      html += '</div></article>';
+    });
+
+    html += '</section>';
+  });
+
+  partsEl.innerHTML = html;
+
+  var defaults = {};
+  PARTS.forEach(function (p) { p.items.forEach(function (it) { if (it.video) defaults[it.id] = it.video; }); });
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".ex"));
+  var sections = Array.prototype.slice.call(document.querySelectorAll("[data-part]"));
+
+  /* ---------- Video: light facade, the player loads on tap ---------- */
+  function currentVideo(id) {
+    return videoIdFrom(customVideos[id]) || defaults[id];
+  }
+
+  function mountVideo(card) {
+    var box = card.querySelector("[data-video]");
+    if (!box) return;
+    var vid = currentVideo(card.dataset.id);
+    var label = box.dataset.label;
+
+    box.innerHTML = "";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "play";
+    btn.setAttribute("aria-label", "הפעלת סרטון הדגמה: " + label);
+
+    var img = document.createElement("img");
+    img.alt = "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.addEventListener("error", function () { img.remove(); });
+    img.src = "https://i.ytimg.com/vi/" + vid + "/hqdefault.jpg";
+
+    var badge = document.createElement("span");
+    badge.className = "play-badge";
+    badge.innerHTML = ICON_PLAY + "הדגמה";
+
+    btn.appendChild(img);
+    btn.appendChild(badge);
+    btn.addEventListener("click", function () {
+      var frame = document.createElement("iframe");
+      frame.title = "סרטון הדגמה: " + label;
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      frame.src = "https://www.youtube.com/embed/" + vid + "?autoplay=1&playsinline=1&rel=0";
+      box.innerHTML = "";
+      box.appendChild(frame);
+    });
+    box.appendChild(btn);
+
+    card.querySelector("[data-yt]").href = "https://www.youtube.com/watch?v=" + vid;
+  }
+
+  cards.forEach(function (card) {
+    mountVideo(card);
+
+    var toggle = card.querySelector("[data-swap-toggle]");
+    if (!toggle) return;
+    var row = card.querySelector(".swap");
+    var input = row.querySelector("input");
+    var msg = card.querySelector(".swap-msg");
+
+    toggle.addEventListener("click", function () {
+      row.hidden = !row.hidden;
+      toggle.setAttribute("aria-expanded", String(!row.hidden));
+      msg.textContent = "";
+      if (!row.hidden) input.focus();
+    });
+
+    function saveSwap() {
+      var raw = input.value.trim();
+      var id = card.dataset.id;
+      if (raw === "") {
+        delete customVideos[id];           // empty field restores the original video
+      } else {
+        var vid = videoIdFrom(raw);
+        if (!vid) {
+          msg.textContent = "הקישור לא זוהה. צריך קישור יוטיוב רגיל, Shorts או youtu.be.";
+          return;
+        }
+        customVideos[id] = vid;
+      }
+      writeStore(VIDEO_KEY, customVideos);
+      msg.textContent = "";
+      input.value = "";
+      row.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      mountVideo(card);
+    }
+
+    row.querySelector("[data-swap-save]").addEventListener("click", saveSwap);
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") saveSwap(); });
+  });
+
+  /* ---------- Checklist ---------- */
+  var overallFill = document.getElementById("overallFill");
+  var overallText = document.getElementById("overallText");
+
+  function refresh() {
+    var total = 0, done = 0;
+    sections.forEach(function (sec) {
+      var ticks = sec.querySelectorAll(".tick");
+      var n = 0;
+      Array.prototype.forEach.call(ticks, function (t) {
+        t.closest(".ex").classList.toggle("is-done", t.checked);
+        if (t.checked) n++;
+      });
+      var count = sec.querySelector("[data-count]");
+      count.textContent = n + " מתוך " + ticks.length;
+      count.classList.toggle("full", n === ticks.length);
+      total += ticks.length;
+      done += n;
+    });
+    overallFill.style.width = (total ? (done / total) * 100 : 0) + "%";
+    overallText.textContent = "הושלמו " + done + " מתוך " + total;
+  }
+
+  cards.forEach(function (card) {
+    var tick = card.querySelector(".tick");
+    tick.checked = checks[card.dataset.id] === true;
+    tick.addEventListener("change", function () {
+      checks[card.dataset.id] = tick.checked;
+      writeStore(CHECK_KEY, checks);
+      refresh();
+    });
+  });
+  refresh();
+
+  /* ---------- Reset (two taps to confirm) ---------- */
+  var resetBtn = document.getElementById("resetBtn");
+  var resetLabel = resetBtn.textContent;
+  var resetArmed = null;
+
+  function disarmReset() {
+    clearTimeout(resetArmed);
+    resetArmed = null;
+    resetBtn.classList.remove("confirm");
+    resetBtn.textContent = resetLabel;
+  }
+
+  resetBtn.addEventListener("click", function () {
+    if (!resetArmed) {
+      resetBtn.classList.add("confirm");
+      resetBtn.textContent = "לחיצה נוספת מנקה את כל הסימונים";
+      resetArmed = setTimeout(disarmReset, 4000);
+      return;
+    }
+    disarmReset();
+    checks = {};
+    cards.forEach(function (card) { card.querySelector(".tick").checked = false; });
+    try { localStorage.removeItem(CHECK_KEY); } catch (e) { /* storage unavailable */ }
+    refresh();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- Timer ---------- */
+  var dock = document.getElementById("dock");
+  var timeEl = document.getElementById("time");
+  var barEl = document.getElementById("dockBar");
+  var goBtn = document.getElementById("goBtn");
+  var liveEl = document.getElementById("timerLive");
+  var modeBtns = Array.prototype.slice.call(document.querySelectorAll(".modes button"));
+
+  var mode = 30;        // seconds to count down, 0 = stopwatch
+  var running = false;
+  var finished = false;
+  var base = 0;         // ms accumulated before the current run
+  var startedAt = 0;
+  var ticker = null;
+  var audio = null;
+
+  function elapsed() { return base + (running ? Date.now() - startedAt : 0); }
+
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+  }
+
+  function render() {
+    var ms = elapsed();
+    if (mode > 0) {
+      var left = Math.max(0, mode * 1000 - ms);
+      timeEl.textContent = fmt(Math.ceil(left / 1000));
+      barEl.style.transform = "scaleX(" + (ms > 0 ? left / (mode * 1000) : 0) + ")";
+      if (running && left === 0) finish();
+    } else {
+      timeEl.textContent = fmt(Math.floor(ms / 1000));
+      barEl.style.transform = "scaleX(0)";
+    }
+    dock.classList.toggle("is-running", running);
+    dock.classList.toggle("is-finished", finished);
+    goBtn.textContent = running ? "השהה" : (ms > 0 && !finished ? "המשך" : "התחל");
+  }
+
+  function stopTicker() { clearInterval(ticker); ticker = null; }
+
+  function start() {
+    if (finished) { finished = false; base = 0; }
+    if (!audio) {
+      try {
+        var Ctx = window.AudioContext || window.webkitAudioContext;
+        if (Ctx) audio = new Ctx();
+      } catch (e) { audio = null; }
+    }
+    if (audio && audio.state === "suspended") { audio.resume(); }
+    running = true;
+    startedAt = Date.now();
+    liveEl.textContent = "";
+    stopTicker();
+    ticker = setInterval(render, 100);
+    render();
+  }
+
+  function pause() {
+    base = elapsed();
+    running = false;
+    stopTicker();
+    render();
+  }
+
+  function finish() {
+    running = false;
+    finished = true;
+    base = mode * 1000;
+    stopTicker();
+    beep();
+    if (navigator.vibrate) { try { navigator.vibrate([200, 100, 200, 100, 400]); } catch (e) {} }
+    liveEl.textContent = "הזמן נגמר";
+    render();
+  }
+
+  function beep() {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime;
+      [0, 0.25, 0.5].forEach(function (offset, i) {
+        var osc = audio.createOscillator();
+        var gain = audio.createGain();
+        osc.type = "sine";
+        osc.frequency.value = i === 2 ? 1175 : 880;
+        gain.gain.setValueAtTime(0.0001, t + offset);
+        gain.gain.exponentialRampToValueAtTime(0.3, t + offset + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + offset + (i === 2 ? 0.45 : 0.18));
+        osc.connect(gain);
+        gain.connect(audio.destination);
+        osc.start(t + offset);
+        osc.stop(t + offset + 0.5);
+      });
+    } catch (e) { /* audio unavailable */ }
+  }
+
+  function setMode(sec) {
+    mode = sec;
+    running = false;
+    finished = false;
+    base = 0;
+    stopTicker();
+    modeBtns.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(Number(b.dataset.mode) === sec));
+    });
+    render();
+  }
+
+  modeBtns.forEach(function (b) {
+    b.addEventListener("click", function () { setMode(Number(b.dataset.mode)); });
+  });
+
+  goBtn.addEventListener("click", function () { if (running) pause(); else start(); });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-timer]"), function (btn) {
+    btn.addEventListener("click", function () {
+      setMode(Number(btn.dataset.timer));
+      start();
+    });
+  });
+
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) render(); });
+
+  render();
+})();
+</script>
+</body>
+</html>
